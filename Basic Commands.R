@@ -977,6 +977,8 @@ qplot(mtcars$hp ,geom = 'histogram',bins=50)
 
 
 
+
+
 irish
 
 

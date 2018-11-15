@@ -4,6 +4,9 @@ data(women)
 
 View(women)
 
+write.csv(women,"dataset.csv",row.names = FALSE)
+
+
 library(ggplot2)
 
 library(dplyr)
@@ -93,6 +96,18 @@ sst  <-    sum( ( (train_set$weight) - mean( train_set$weight ))^2 )
 1 - ssr/sst 
 
 #Adjusted R square
+
+
+
+
+?predict
+#predict function is to predict the values.
+predict(reg_model,test_set)
+
+View(predict(reg_model,test_set))
+
+
+ggplot(train_set) + geom_point(aes(x=height,y=weight),color ='red')+geom_line(aes(x = height,y = predict(reg_model,train_set)),color ='blue')
 
 
  
