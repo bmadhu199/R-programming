@@ -23,6 +23,8 @@ Prestige[is.na(Prestige$type),]
 
 data <- Prestige[,-c(5,6)]
 
+write.csv(data,"data.csv",row.names = FALSE)
+
 set.seed(123)
 training_income_set = sample(1: nrow(data), round(0.85* nrow(data)))
 
