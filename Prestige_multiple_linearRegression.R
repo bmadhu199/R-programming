@@ -35,9 +35,23 @@ ggplot(Prestige,aes(y= income,x= prestige))+geom_point(color ='red')+ggtitle('in
 ggplot(Prestige,aes(y= income,x= education))+geom_point(color ='red')+ggtitle('income VS education')+ylab("income")+xlab("education")
 ggplot(Prestige,aes(y= (income),x= women))+geom_point(color ='red')+ggtitle('income VS women')+ylab("income")+xlab("women")
 
-reg_model <- lm(log(income_train_set$income) ~ . , data = income_train_set)
+reg_model <- lm(income_train_set$income ~ . , data = income_train_set)
+
+
+reg_model <- lm(log(income_train_set$income) ~ women + prestige , data = income_train_set)
 
 summary(reg_model)
+
+##################################################
+
+step(reg_model,direction = "backward")
+step(reg_model,direction = "forward")
+
+#Check the step() and compare the AIC value of the differenct models.
+#the one with the least AIC values will have be selectd and wil proceed o check for the R^2 values.
+
+##################################################
+
 # the Adj R2 is almost near to 0.6
 # when our model is not accurate, we can perform data transformation operations like   Square root , square , log
 # we go ahead performing all the transfoermation operations and consider the best.
@@ -45,11 +59,14 @@ summary(reg_model)
 # for example   sqrt(16) - 4 but log(16) is < 4.   So we go with the log.
 
 
-predict(reg_model,income_test_set)
+ predict(reg_model,income_test_set)
 
-exp(predict(reg_model,income_test_set))
+ predict_exp <- exp(predict(reg_model,income_test_set))
 
-rmse(predicted = reg_model)
+
+
+rmse()
+rmse(actual = income_test_set$income ,predicted = predict_exp)
 
 ##Condition for  the simple 
 
