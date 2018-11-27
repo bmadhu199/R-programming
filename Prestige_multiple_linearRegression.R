@@ -25,6 +25,7 @@ data <- Prestige[,-c(5,6)]
 
 write.csv(data,"data.csv",row.names = FALSE)
 
+
 set.seed(123)
 training_income_set = sample(1: nrow(data), round(0.85* nrow(data)))
 
@@ -59,9 +60,9 @@ step(reg_model,direction = "forward")
 # for example   sqrt(16) - 4 but log(16) is < 4.   So we go with the log.
 
 
- predict(reg_model,income_test_set)
+ predict(reg_model,income_test_set)  # for predicting the values.
 
- predict_exp <- exp(predict(reg_model,income_test_set))
+ predict_exp <- exp(predict(reg_model,income_test_set))   #
 
 
 
