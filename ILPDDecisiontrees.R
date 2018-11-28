@@ -58,6 +58,9 @@ best_cp <- regressor$cptable[which.min(regressor$cptable[2:4, "xerror"]) + 1, 'C
 
 best_model <- prune(regressor, best_cp)
 
+
+
+rpart.plot(best_model)
 prun_val<-  predict(best_model,test_set[,-11], type = "class")
 
 confusionMatrix(factor(test_set$V11),prun_val)
