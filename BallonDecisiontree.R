@@ -37,4 +37,9 @@ reg_model <-  rpart(formula = ballon_train$Inflated ~ . , data = ballon_train , 
 rpart.plot(reg_model)
 reg_model$cptable
 
+predict(reg_model,ballon_test, type = "class")
+
+
+
+
 
