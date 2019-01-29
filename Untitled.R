@@ -1,5 +1,1 @@
-install.packages("car")
-
-
-library(car)
-
+pt(2.24,21,lower.tail = FALSE)

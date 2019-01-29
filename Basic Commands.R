@@ -1,7 +1,23 @@
 
 
+n <- floor(rnorm(10000, 500, 100))
+t <- table(n)
+
+barplot(t,xlab = "numbers",ylab = "Frequencies")
+
+
+
+
+#to convert number to 
 numbs <- 3456.23
 class(numbs)
+?typeof
+
+?class
+typeof(numbs)
+
+month.abb
+month.name
 
 int <- as.integer(numbs)
 class(int)
@@ -43,11 +59,11 @@ seq(from = 7,to = 1000,by = 7 )
 
 
 
-list(1,"name",2,"place")
-list(1,"name",list(1,2,3))
+L <- list(1,"name",2,"place")
+ L <- list(1,"name",list(1,2,3))
 
 
-list[3]
+L[3]
 
 number[1:2]
 
@@ -63,19 +79,28 @@ bool_vec
 
 bool_vec[5]
 
+################################################
 comb_vec <- list(1,c(1,2,3,list(1,2)))
-com_vec[2][4][2]
+comb_vec[[2]][5]
+#To enter into a vector use [[]],
+# not required for list.
+
 
 
 
 com <- list(1,c(1,2,3,list(1,2)))
 com[2]
-com[2][5]
 
+com[[2]][[4]][1]
+
+
+#same for because list is printed in series and doesnt require any special[[]].
 com[[2]][[5]]
+com[[2]][5]
+#####
 
 
-com[2][[4]][2]
+com[[2]][[4]][2]
 
 com[2]
 com[2][1]
@@ -86,6 +111,7 @@ com[[2]][[5]]
 
 dell <- list(1,2,"name",list(3,4,list(2,3)),1,list(list(list(1,2,3))))
  dell[[6]][[1]][[1]][[2]]
+ 
  
  
  
@@ -121,17 +147,14 @@ dell <- list(1,2,"name",list(3,4,list(2,3)),1,list(list(list(1,2,3))))
  
 chill <- matrix(seq(1,18,2),3,3,byrow = T)
  
- chill
+chill
 
  matrix(1:9,3,3)
  matrix(1:9,3,3,byrow = T)
 
 mat <- matrix(seq(2,32,2),4,4,byrow = T)
- mat[[2]]
-
  
- mat2 <- matrix(seq(2,32,2),4,4,byrow = T)
-mat[1:3,mat[1:2,2:3]] 
+mat2 <- matrix(seq(2,32,2),4,4,byrow = T)
 
 
 mat[2,]  
@@ -165,19 +188,19 @@ matri2 <- matrix(1:100,10,10,byrow = T)
 
 matri4 <- matri3/2
 
-matri2+matri4
+matri2+matri3
 
-matri4 - matri2
+matri3 - matri2
 
 matri2 %*% matri3
 
-matri2[1,3]
+matri2[1,]
 
 matri2[,1]
 
 matri2[1,]
 
-matri2[c(1,10),]
+matri2[c(1,10,7),]
 
 matri2[c(1:5,10:5),]
 
@@ -210,7 +233,11 @@ vecto[vecto >50 & vecto < 70]
 
 seq(1,100,2)[seq(1,100,2) > 50 & seq(1,100,2) < 70] 
 
-seq(1,100,2)[seq(1,100,2) < 50 | seq(1,100,2) > 70] 
+seq(1,100,2)[seq(1,100,2) < 50 | seq(1,100,2) > 70]
+
+
+
+seq(0,200,2)[seq(1,200,2) > 50 & seq(1,200,2) < 150]
 
 
 
@@ -218,8 +245,13 @@ age <- c(22,11,7)
 
 
 animals <- c("girrafe","lion","Dog")
+animi <- c('zebra','monkey','robot')
 
 names(age) <- animals
+names(age) <- animi
+age
+
+?names()
 
 age["Dog"]
 
@@ -228,9 +260,11 @@ age[c("lion","Dog")]
 
 paste(1:4,4:1,1:4,sep="-")
 
+?paste()
+
 paste("heloo-world", sep = "-")
 
-paste("hello","world",sep = " ",collapse = " ")
+paste("hello","world",sep = "-",collapse = " ")
 
 paste("hello","world",sep = "")
 
@@ -256,6 +290,16 @@ for (vec in 1:100) {
   }
   
 }
+
+temp = 0
+
+for (veg  in seq(1,100) ) {
+  
+  temp = veg + temp
+  
+}
+
+print(temp)
 
 
 
@@ -283,6 +327,17 @@ if(var == 1){
 }
 
 
+var =10
+
+if ( var == 1) {
+  var = var +1
+}else {
+  var = var - 1
+}
+var
+
+
+
 var
 
 i = 1
@@ -297,6 +352,8 @@ while ( i<100 ) {
 
 
 
+MY
+
 
 
 my_sum <- function(v){
@@ -309,6 +366,8 @@ my_sum <- function(v){
 }
 
 my_sum(1:100)  
+
+
 
 
 vect <- c(1,2,3)
@@ -339,7 +398,11 @@ Gender <- c('M',NA,'M','M')
 
 ?factor
 
+
+
 df <- data.frame(name,Age,Gender)
+
+
 
 df
 
@@ -367,6 +430,7 @@ df
 df[,1]
 
 class(df[2])
+
 
 class(df[,c('name','Age')])
 
@@ -420,18 +484,31 @@ summary(iris)
 
 is.na(df)
 
-summary(df)
+summary(iris)
 
-colSums(is.na(df))
+colSums(is.na(iris))
 
-which(is.na(df))
-which.max(is.na(df$Gender))
+
+?which
+?which.max
+
+which(is.na(iris))
+
+which.max(is.na(iris$Sepal.Length))
+
+which.max(is.na(iris$Petal.Length))
+
+
 
 
 which.max(1:100)
 
 which.max(is.na(df$Age))
+
+
 any(is.na(df))
+
+
 
 all(is.na(df))
 
@@ -439,7 +516,6 @@ all(is.na(df))
 any(is.na(iris))
 
 all(is.na(iris))
-
 
 df[which(is.na(df$Age)) ,2] <- mean(df$Age,na.rm = T)
 
@@ -451,13 +527,16 @@ df[which(is.na(df$Gender)),3] <- unique(df$Gender)
 df[which(is.na(df$Gender)),3]
 
 
+?rank()
 rank <- c(1,2,3,4)
+
 
 
 summary(df)
 
 df <- cbind(df,rank)
-df
+
+
 rbind(name ='sam',Age = 12 ,Gender ='F',rank = 5)
 
 
